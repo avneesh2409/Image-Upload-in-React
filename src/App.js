@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
+import React,{useEffect} from 'react';
 import './App.css';
+import {connect} from 'react-redux'
+import {fetchUsers} from './store/userStore'
+import ShowUsers from './components/showUsers';
+import ContactForm from './components/ContactForm';
 
-function App() {
+function App(props) {
+  const url = "https://api.randomuser.me/"
+useEffect(() => {
+  props.fetchUsers(url)
+}, [props])
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <h1>Hello Hey there</h1>
+      <ShowUsers />
+      <ContactForm />
       </header>
     </div>
   );
 }
-
-export default App;
+const mapDispatchToProps = (dispatch) =>{
+  return {
+    fetchUsers:(url)=>dispatch(fetchUsers(url))
+  }
+}
+export default connect(null,mapDispatchToProps)(App);
