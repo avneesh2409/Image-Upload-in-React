@@ -3,8 +3,8 @@ import './App.css';
 import {connect} from 'react-redux'
 import {fetchUsers} from './store/userStore'
 // import ShowUsers from './components/showUsers';
-import ContactForm from './components/ContactForm';
-// import Root from './components/Root';
+// import ContactForm from './components/ContactForm';
+import Root from './components/Root';
 
 function App(props) {
   const url = "https://api.randomuser.me/"
@@ -16,8 +16,8 @@ useEffect(() => {
       <header className="App-header">
       <h1>this is propogation of state and Props</h1>
       {/* <ShowUsers /> */}
-      <ContactForm />
-      {/* <Root /> */}
+      {/* <ContactForm /> */}
+      <Root />
       </header>
     </div>
   );

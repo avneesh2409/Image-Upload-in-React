@@ -1,22 +1,24 @@
 import React, { Component } from 'react'
-import { Image } from './Image';
-
+import {connect} from 'react-redux';
+import {storeImageUrl} from '../store/userStore'
 // const CLOUDINARY_UPLOAD_PRESET = 'avneesh';
 const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/avneeshcloud/upload';
-export default class ContactForm extends Component {
+class ContactForm extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       uploadedUrl: '',
-      uploadedFile: ''
+      uploadedFile: '',
+      filename:'upload file'
     };
     this.onChangeHandler = this.onChangeHandler.bind(this)
     this.onSubmitHandler = this.onSubmitHandler.bind(this)
   }
   onChangeHandler(e) {
     this.setState({
-      uploadedFile : e.target.files[0]
+      uploadedFile: e.target.files[0],
+      filename:e.target.files[0].name
     });
     console.log(e.target.files[0])
 
@@ -27,37 +29,46 @@ export default class ContactForm extends Component {
 
     e.preventDefault()
     let formData = new FormData()
-    formData.append("file",this.state.uploadedFile)
-    formData.append("upload_preset",'avneesh')
+    formData.append("file", this.state.uploadedFile)
+    formData.append("upload_preset", 'avneesh')
     const options = {
-      method:'POST',
-      body:formData
+      method: 'POST',
+      body: formData
     }
-    let upload = fetch(CLOUDINARY_UPLOAD_URL,options)
+    const upload = fetch(CLOUDINARY_UPLOAD_URL, options).then(res=>res.json())
     upload.then((response) => {
-     console.log("response :-",response)
-    }).catch(err=>{console.log("error :-",err)})
+      this.setState({
+        uploadedUrl:response.secure_url
+      })
+      this.props.storeImageUrl(response.secure_url)
+    }).catch(err => { console.log("error :-", err) })
   }
   render() {
+
     return (
       <div>
         <form onSubmit={this.onSubmitHandler} >
-          <input type='file'
-            name='file'
-            onChange={this.onChangeHandler}
-          />
+          <div style={{position: 'relative'}}>
+            <input type='file' style={{position: 'relative' ,textAlign: 'right',opacity: 0,zIndex: 2}}
+              name='file'
+              onChange={this.onChangeHandler}
+            />
+            <div style={{position: 'absolute',top: '0px',left: '0px',zIndex: 1}}>
+              <input placeholder={this.state.filename} style = {{backgroundColor:'#DAEED8',textAlign:'center',borderRadius:'10px'}} />
+            </div>
+          </div>
           <button>submit</button>
         </form>
-
-
-        <div>
-          {
-            (this.state.uploadedUrl !== '') ? <Image src={this.state.uploadedUrl} /> : <h1>Loading .....</h1>
-          }
-
-        </div>
+        
       </div>
     )
   }
 
 }
+const mapDispatchToProps = (dispatch) =>{
+  return {
+    storeImageUrl:(url)=>dispatch(storeImageUrl(url))
+  }
+}
+
+export default connect(null,mapDispatchToProps)(ContactForm)

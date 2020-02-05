@@ -1,4 +1,4 @@
-import {FETCH_USER_FAILURE,FETCH_USER_REQUEST,FETCH_USER_SUCCESS} from '../constant'
+import {FETCH_USER_FAILURE,FETCH_USER_REQUEST,STORE_IMAGE_URL,FETCH_USER_SUCCESS} from '../constant'
 export const fetchUsers = (url) =>{
     return (dispatch) =>{
         dispatch(FetchUserRequest())
@@ -24,5 +24,12 @@ export const FetchUserFailure = (message) =>{
     return {
         type:FETCH_USER_FAILURE,
         message
+    }
+}
+
+export const storeImageUrl = (url) =>{
+    return {
+        type:STORE_IMAGE_URL,
+        url
     }
 }

@@ -1,11 +1,12 @@
-import {userReducer} from './userStore'
+import {userReducer,imageReducer} from './userStore'
 import { applyMiddleware, createStore,combineReducers } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunkMiddleware from 'redux-thunk'
 import loggerMiddleware from 'redux-logger'
 
 const rootReducer = combineReducers({
-    userReducer
+    userReducer,
+    imageReducer
 })
 
 export default function configureStore(preloadedState) {

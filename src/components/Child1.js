@@ -1,19 +1,12 @@
 import React,{Component} from 'react'
+import ContactForm from './ContactForm'
 class Child1 extends Component {
     render () {
       return (
         <div>
-          <input type='text' value={this.props.data} onChange = {this.update.bind(this)} ref='myInput'/>
+          <ContactForm />
         </div>
       )
-    }
-    update () {
-      this.props.onUpdate(this.refs.myInput.value)
-    }
-    fetchData = (url) =>{
-        this.setState({
-            url
-        })
     }
 }
 
