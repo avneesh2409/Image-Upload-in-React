@@ -4,7 +4,7 @@ import Child2 from './Child2'
 class Root extends Component {
     constructor (props) {
       super(props)
-      this.state = { data: 'test' }
+      this.state = { data: '' }
     }
     render () {
       return (

@@ -10,6 +10,11 @@ class Child1 extends Component {
     update () {
       this.props.onUpdate(this.refs.myInput.value)
     }
+    fetchData = (url) =>{
+        this.setState({
+            url
+        })
+    }
 }
 
 export default Child1
