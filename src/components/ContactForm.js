@@ -1,46 +1,54 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux';
 import {storeImageUrl} from '../store/userStore'
-// const CLOUDINARY_UPLOAD_PRESET = 'avneesh';
-const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/avneeshcloud/upload';
+// const UPLOAD_PRESET = 'avneesh';
+// const UPLOAD_URL = 'https://api.cloudinary.com/v1_1/avneeshcloud/upload';
+const UPLOAD_URL = 'http://localhost:5005/user/register'
+
 class ContactForm extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       uploadedUrl: '',
-      uploadedFile: '',
+      uploadedFile: null,
       filename:'upload file'
     };
     this.onChangeHandler = this.onChangeHandler.bind(this)
     this.onSubmitHandler = this.onSubmitHandler.bind(this)
   }
   onChangeHandler(e) {
-    this.setState({
-      uploadedFile: e.target.files[0],
-      filename:e.target.files[0].name
-    });
-    console.log(e.target.files[0])
-
+    let files = "";
+    if(e.target.files && e.target.files.length > 0){
+      this.setState({
+        uploadedFile: e.target.files
+      });
+     for(let file in e.target.files){
+       if(e.target.files[file].name && e.target.files[file].name !== 'item'){
+          files = files + e.target.files[file].name + ',';
+       }
+     }
+    }
+this.setState({
+  filename:files
+})
   }
 
   onSubmitHandler(e) {
-    console.log(e);
-
-    e.preventDefault()
+     e.preventDefault()
     let formData = new FormData()
     formData.append("file", this.state.uploadedFile)
-    formData.append("upload_preset", 'avneesh')
     const options = {
       method: 'POST',
       body: formData
     }
-    const upload = fetch(CLOUDINARY_UPLOAD_URL, options).then(res=>res.json())
+    const upload = fetch(UPLOAD_URL, options).then(res=>res.json())
     upload.then((response) => {
-      this.setState({
-        uploadedUrl:response.secure_url
-      })
-      this.props.storeImageUrl(response.secure_url)
+      console.log(response)
+      // this.setState({
+      //   uploadedUrl:response.secure_url
+      // })
+      // this.props.storeImageUrl(response.secure_url)
     }).catch(err => { console.log("error :-", err) })
   }
   render() {
@@ -51,6 +59,8 @@ class ContactForm extends Component {
           <div style={{position: 'relative'}}>
             <input type='file' style={{position: 'relative' ,textAlign: 'right',opacity: 0,zIndex: 2}}
               name='file'
+              accept='image/*'
+              multiple = {true}
               onChange={this.onChangeHandler}
             />
             <div style={{position: 'absolute',top: '0px',left: '0px',zIndex: 1}}>
