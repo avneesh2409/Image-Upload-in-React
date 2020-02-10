@@ -4,6 +4,7 @@ import DisplayData from '../components/displayData'
 import Root from '../components/Root';
 import ShowUsers from '../components/showUsers';
 import Contact from '../components/contact';
+import Event from '../components/event';
 const Router = () => {
     return (
         <BrowserRouter>
@@ -23,6 +24,7 @@ const Router = () => {
                 <Route path='/user' exact component={ShowUsers} />
                 <Route path='/contact' exact component={Contact} />
                 <Route path='/root' exact component={Root} />
+                <Route path='/event' exact component={Event} />
                 </header>
             </BrowserRouter>
     )
