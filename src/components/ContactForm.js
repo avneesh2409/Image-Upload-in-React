@@ -45,10 +45,6 @@ this.setState({
     const upload = fetch(UPLOAD_URL, options).then(res=>res.json())
     upload.then((response) => {
       console.log(response)
-      // this.setState({
-      //   uploadedUrl:response.secure_url
-      // })
-      // this.props.storeImageUrl(response.secure_url)
     }).catch(err => { console.log("error :-", err) })
   }
   render() {

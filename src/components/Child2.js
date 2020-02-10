@@ -1,14 +1,11 @@
 import React,{Component} from 'react';
-import { Image } from './Image';
 import {connect} from 'react-redux';
 
 class Child2 extends Component {
     render () {
-      return (<div>
-          {(this.props.url)?
-             <Image src={this.props.url.url} /> : <h1>Loading .....</h1>
-          }
-         
+      return (
+      <div>
+              we are in child 2
       </div>
       )
     }

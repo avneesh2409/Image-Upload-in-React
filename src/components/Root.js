@@ -9,11 +9,10 @@ class Root extends Component {
     render () {
       return (
         <div>
-          <Child1 onUpdate={this.onUpdate.bind(this)} data={this.state.data}/>
-          <Child2 data={this.state.data}/>
+          <Child1 />
+          <Child2 />
         </div>
       )
     }
-    onUpdate (data) { this.setState({ data:data.toUpperCase() }) }
   }
   export default Root

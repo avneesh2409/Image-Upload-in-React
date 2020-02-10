@@ -2,6 +2,35 @@
   text-align: center;
 }
 
+.ext1 .message {
+      border-bottom: 1px solid #DADADA;
+      padding: 0px 0;
+  }
+
+.ext1 .message:hover {
+          background: blue;
+          cursor:pointer;
+      }
+
+.App-header li {
+  float:left;
+  padding:10px;
+}
+
+div.ex1 {
+  padding:50px 50px;
+  text-align:justify;
+  background-color:#DADADA;
+  overflow: auto;
+  max-height: calc(70vh - 370px);
+  width: 50%;
+  overflow-y: scroll;
+  color:black;
+  position:absolute;
+  left:22%;
+  top:65%;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

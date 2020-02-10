@@ -24,7 +24,7 @@ export const userReducer = (state = initialState,action) =>{
                 return {
                     ...state,
                     loading:false,
-                    message:action.message
+                    error:action.message
                 }
         default : return state
     }
