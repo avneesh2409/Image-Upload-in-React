@@ -3,6 +3,7 @@ import {BrowserRouter, Link,Route} from 'react-router-dom'
 import DisplayData from '../components/displayData'
 import Root from '../components/Root';
 import ShowUsers from '../components/showUsers';
+import Contact from '../components/contact';
 const Router = () => {
     return (
         <BrowserRouter>
@@ -14,13 +15,15 @@ const Router = () => {
                     <li><Link to='/display' >displayUser</Link></li>
                     <li><Link to='/root' >Root</Link></li>
                 </ul>
-                </header>
+                
                 <Route path='/' exact render = {()=>
                         <h1>HEllo welcome to my site</h1>}
                          />
                 <Route path='/display' exact component={DisplayData} />
                 <Route path='/user' exact component={ShowUsers} />
+                <Route path='/contact' exact component={Contact} />
                 <Route path='/root' exact component={Root} />
+                </header>
             </BrowserRouter>
     )
 }
