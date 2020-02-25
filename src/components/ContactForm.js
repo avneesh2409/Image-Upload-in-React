@@ -52,7 +52,7 @@ this.setState({
     return (
       <div>
         <form onSubmit={this.onSubmitHandler} >
-          <div style={{position: 'relative'}}>
+          <div>
             <input type='file' style={{position: 'relative' ,textAlign: 'right',opacity: 0,zIndex: 2}}
               name='file'
               accept='image/*'
@@ -60,7 +60,7 @@ this.setState({
               onChange={this.onChangeHandler}
             />
             <div style={{position: 'absolute',top: '0px',left: '0px',zIndex: 1}}>
-              <input placeholder={this.state.filename} style = {{backgroundColor:'#DAEED8',textAlign:'center',borderRadius:'10px'}} />
+              <input placeholder={this.state.filename} style = {{textAlign:'center'}} />
             </div>
           </div>
           <button>submit</button>

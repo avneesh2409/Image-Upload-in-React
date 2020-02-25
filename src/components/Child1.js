@@ -3,7 +3,9 @@ import ContactForm from './ContactForm'
 class Child1 extends Component {
     render () {
       return (
-        <div>
+        <div style={{height:'250px',width:'250px',position:'absolute',top:'30%'}}>
+          <ContactForm />
+          <ContactForm />
           <ContactForm />
         </div>
       )

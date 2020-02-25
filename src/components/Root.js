@@ -9,7 +9,7 @@ class Root extends Component {
     render () {
       return (
         <div>
-          <Child1 />
+          {/* <Child1 /> */}
           <Child2 />
         </div>
       )

@@ -35,3 +35,47 @@ div.ex1 {
   height: 40vmin;
   pointer-events: none;
 }
+.show{
+  display: block;
+}
+.contentwrapper{
+  padding:0px;
+  position:absolute;
+  right:0px;
+  background: burlywood;
+  display:none;
+  width:150px;
+}
+.description{
+height:100px;
+background:red;
+}
+.image{
+height:70px;
+background:blue;
+margin-bottom:10px;
+}
+.child2wrapper{
+  height:50%;
+  width:50%;
+  background:#b3b3b3;
+  position:absolute;
+  top:10%;
+  left:30%;
+}
+.child2wrapper p:hover{
+  cursor:pointer;
+  color:whitesmoke;
+}
+#register{
+  text-align:center;
+  background: #a19a9a;
+  width:50%;
+position: absolute;
+left:30%;
+}
+#register input{
+  padding:5px;
+  margin:10px;
+}
+
